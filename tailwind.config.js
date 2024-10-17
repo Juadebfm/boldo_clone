@@ -8,6 +8,10 @@ export default {
         boldo_green: "#65E4A3",
         boldo_gray: "#777777",
       },
+      fontFamily: {
+        open_sans: ["Open Sans", "sans-serif"],
+        manrope: ["Manrope", "sans-serif"],
+      },
     },
   },
   plugins: [],
