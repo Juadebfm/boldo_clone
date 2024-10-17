@@ -6,10 +6,13 @@ import { Link } from "react-router-dom";
 const Navbar = ({ navItems }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeItem, setActiveItem] = useState("");
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollPos = window.pageYOffset;
+      setIsScrolled(currentScrollPos > 50);
+
       const sections = navItems.map((item) =>
         document.querySelector(item.href)
       );
@@ -42,23 +45,34 @@ const Navbar = ({ navItems }) => {
   };
 
   return (
-    <nav className="static sm:fixed top-[35px] left-0 right-0 z-50 bg-transparent py-10 sm:py-0">
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-5 ${
+        isScrolled ? "bg-white shadow-md" : "bg-transparent"
+      }`}
+    >
       <div className="mx-auto px-8 sm:px-6 lg:px-20">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-16 sm:h-20">
           <div className="flex items-center">
-            {/* Use Link to="/" for navigation to Home page */}
             <Link to="/">
-              <div className="flex-shrink-0 flex items-center justify-center gap-4">
-                <img className="h-8 w-auto" src="/logoBoldo.png" alt="Logo" />
-                <span className="font-medium text-[35px] leading-[33px] text-white">
+              <div className="flex-shrink-0 flex items-center justify-center gap-2 sm:gap-4">
+                <img
+                  className="h-6 w-auto sm:h-8"
+                  src="/logoBoldo.png"
+                  alt="Logo"
+                />
+                <span
+                  className={`font-medium text-2xl sm:text-[35px] leading-[33px] ${
+                    isScrolled ? "text-[#0A2640]" : "text-white"
+                  }`}
+                >
                   Boldo
                 </span>
               </div>
             </Link>
           </div>
 
-          <div className="hidden md:block px-3 sm:px-3">
-            <div className="ml-0 mt-10 sm:mt-0 sm:ml-10 flex items-center space-x-4 font-open_sans font-semibold">
+          <div className="hidden md:block">
+            <div className="ml-10 flex items-center space-x-4 font-open_sans font-semibold">
               {navItems.map((item) =>
                 !item.isButton ? (
                   <Link
@@ -72,8 +86,14 @@ const Navbar = ({ navItems }) => {
                     }}
                     className={`px-3 py-2 rounded-md text-sm font-medium ${
                       activeItem === item.href.slice(1)
-                        ? "bg-gray-900 text-white"
-                        : "text-gray-400 hover:text-white duration-200 transition-all"
+                        ? `${
+                            isScrolled
+                              ? "bg-[#0A2640] text-white"
+                              : "bg-white text-[#0A2640]"
+                          }`
+                        : `${
+                            isScrolled ? "text-[#0A2640]" : "text-white"
+                          } hover:bg-opacity-20 hover:bg-gray-700`
                     }`}
                   >
                     {item.name}
@@ -82,17 +102,24 @@ const Navbar = ({ navItems }) => {
               )}
 
               <Button
-                className="bg-white text-[#0A2640] px-4 py-2 rounded-md"
+                className={`${
+                  isScrolled
+                    ? "bg-[#0A2640] text-white"
+                    : "bg-white text-[#0A2640]"
+                } px-4 py-2 rounded-md`}
                 buttonText="Login"
               />
             </div>
           </div>
 
+          {/* Mobile menu button */}
           <div className="flex md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
               type="button"
-              className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
+              className={`inline-flex items-center justify-center p-2 rounded-md ${
+                isScrolled ? "text-[#0A2640]" : "text-white"
+              } hover:bg-opacity-20 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white`}
               aria-controls="mobile-menu"
               aria-expanded={isOpen}
             >
@@ -140,6 +167,7 @@ const Navbar = ({ navItems }) => {
         </div>
       </div>
 
+      {/* Mobile menu, show/hide based on menu state */}
       <motion.div
         className="md:hidden"
         initial={{ opacity: 0, height: 0 }}
@@ -148,7 +176,11 @@ const Navbar = ({ navItems }) => {
         }
         transition={{ duration: 0.3 }}
       >
-        <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+        <div
+          className={`px-2 pt-2 pb-3 space-y-1 sm:px-3 ${
+            isScrolled ? "bg-white" : "bg-[#0A2640]"
+          }`}
+        >
           {navItems.map((item) =>
             !item.isButton ? (
               <Link
@@ -160,17 +192,33 @@ const Navbar = ({ navItems }) => {
                     handleItemClick(item.href);
                   }
                 }}
-                className="block px-3 py-2 rounded-md text-base font-medium text-gray-300"
+                className={`block px-3 py-2 rounded-md text-base font-medium ${
+                  activeItem === item.href.slice(1)
+                    ? `${
+                        isScrolled
+                          ? "bg-[#0A2640] text-white"
+                          : "bg-white text-[#0A2640]"
+                      }`
+                    : `${
+                        isScrolled ? "text-[#0A2640]" : "text-white"
+                      } hover:bg-opacity-20 hover:bg-gray-700`
+                }`}
               >
                 {item.name}
               </Link>
             ) : null
           )}
 
-          <Button
-            className="bg-white text-[#0A2640] px-4 py-2 rounded-md hover:shadow-lg shadow-white/70"
-            buttonText="Login"
-          />
+          <div className="px-3 py-2">
+            <Button
+              className={`${
+                isScrolled
+                  ? "bg-[#0A2640] text-white"
+                  : "bg-white text-[#0A2640]"
+              } px-4 py-2 rounded-md hover:shadow-lg w-full`}
+              buttonText="Login"
+            />
+          </div>
         </div>
       </motion.div>
     </nav>

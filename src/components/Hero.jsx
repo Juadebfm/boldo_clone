@@ -4,13 +4,13 @@ import Partners from "./Partners";
 
 const Hero = () => {
   return (
-    <div className="bg-boldo_blue h-screen flex flex-col relative overflow-hidden">
+    <div className="bg-boldo_blue h-max sm:h-screen flex flex-col relative overflow-hidden pt-28">
       <div className="flex-grow flex flex-col sm:flex-row items-center justify-center px-8 sm:px-6 lg:px-20">
         <div className="bg-[#1C3D5B]/40 h-[900px] w-[900px] rounded-full absolute z-10 -top-[15%] lg:-top-[30%] right-0 lg:-right-[20%]"></div>
 
         <div className="w-full sm:w-[55%] z-20">
           <div className="w-full sm:w-[75%]">
-            <h1 className="text-[32px] sm:text-[40px] lg:text-[50px] capitalize text-white leading-tight">
+            <h1 className="text-[36px] sm:text-[40px] lg:text-[50px] capitalize text-white leading-tight">
               Save time by building fast with Boldo Template
             </h1>
             <p className="mt-4 text-[#F1F1F1]/70 text-[16px] sm:text-[19px] leading-[1.8]">
