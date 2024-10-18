@@ -4,7 +4,9 @@ import MainLayout from "../layouts/MainLayout";
 const Product = () => {
   return (
     <MainLayout>
-      <section>Product </section>
+      <section className="flex items-center justify-center text-white min-h-screen">
+        Product{" "}
+      </section>
     </MainLayout>
   );
 };

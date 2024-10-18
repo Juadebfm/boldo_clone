@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Button from "./resusable/Button";
 
 const Footer = () => {
   return (
@@ -36,7 +37,13 @@ const Footer = () => {
             <Link to="/">Home</Link>
           </li>
           <li className="text-[#777777] hover:text-black duration-150 transition-all ease-in-out">
-            <Link to="/">Careers</Link>
+            <Link to="/" className="flex items-center gap-3">
+              <span>Careers</span>
+              <Button
+                buttonText="Hiring!"
+                className="bg-boldo_green w-[72px] h-[30px] text-boldo_blue font-semibold text-sm"
+              />
+            </Link>
           </li>
           <li className="text-[#777777] hover:text-black duration-150 transition-all ease-in-out">
             <Link to="/services">Services</Link>
