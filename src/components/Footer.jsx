@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <footer className="px-[35px] sm:px-20 py-20 bg-white flex flex-col sm:flex-row items-start justify-between gap-11 sm:gap-24">
-      <div className="w-full sm:w-[25%]">
+    <footer className="px-[35px] sm:px-20 py-20 bg-white flex flex-col lg:flex-row items-start justify-between gap-11 sm:gap-24">
+      <div className="w-full lg:w-[25%]">
         <img
           src="/logofooter.png"
           alt=""
@@ -17,7 +17,7 @@ const Footer = () => {
 
         <small className="text-[#777777]">All rights reserved.</small>
       </div>
-      <div className="w-full sm:w-[75%] grid grid-cols-2 sm:grid-cols-3 place-items-start gap-8 sm:gap-0">
+      <div className="w-full sm:w-[75%] grid grid-cols-2 lg:grid-cols-3 place-items-start gap-8 lg:gap-0">
         <ul className="space-y-8">
           <span className="text-[20px] text-black font-bold">Landings</span>
           <li className="text-[#777777] hover:text-black duration-150 transition-all ease-in-out">

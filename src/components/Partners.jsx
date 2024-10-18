@@ -39,7 +39,7 @@ const Partners = () => {
   }, [logos, controls]);
 
   return (
-    <div className="static sm:relative overflow-hidden h-max sm:h-[100px] flex items-center bg-boldo_blue z-20 pb-16 mt-16 sm:mt-0">
+    <div className="static sm:relative overflow-hidden h-max md:h-[200px] flex items-center bg-boldo_blue z-20 pb-16 mt-16 sm:mt-0">
       <div className="absolute inset-0 bg-gradient-to-r from-boldo_blue via-transparent to-boldo_blue z-10" />
       <motion.div
         className="flex gap-10 absolute whitespace-nowrap"

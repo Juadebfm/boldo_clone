@@ -33,11 +33,11 @@ const BlogPost = () => {
             <small className="capitalize text-[20px] text-boldo_blue">
               Blog
             </small>
-            <h2 className="w-full sm:w-[45%] mx-auto text-[33px] sm:text-[40px] text-center text-boldo_blue capitalize">
+            <h2 className="w-full lg:w-[45%] mx-auto text-[33px] sm:text-[40px] text-center text-boldo_blue capitalize">
               Thoughts and words
             </h2>
 
-            <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 gap-[6rem] place-items-center border-b border-boldo_blue pb-[4.5rem]">
+            <div className="mt-16 grid grid-cols-1 lg:grid-cols-2 gap-[6rem] place-items-center border-b border-boldo_blue pb-[4.5rem]">
               <div>
                 <img
                   src={post.image}
@@ -68,12 +68,12 @@ const BlogPost = () => {
             </div>
           </div>
 
-          <div className="mt-16 px-[35px] sm:px-20 py-20">
+          <div className="mt-16 px-[35px] md:px-20 py-20">
             <h2 className="w-full self-start mx-auto text-[33px] sm:text-[40px] text-boldo_blue capitalize mb-8">
               Latest News
             </h2>
 
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-16">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16">
               {latestPosts.map((latestPost) => (
                 <BlogCard key={latestPost.id} post={latestPost} />
               ))}

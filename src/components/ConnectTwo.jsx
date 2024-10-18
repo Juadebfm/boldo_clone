@@ -6,7 +6,7 @@ import { IoSunnyOutline } from "react-icons/io5";
 
 const ConnectTwo = () => {
   return (
-    <section className="px-[35px] sm:px-20 py-8 sm:py-20 bg-white text-black grid grid-cols-1 sm:grid-cols-2 place-items-start gap-10 sm:gap-24">
+    <section className="px-[35px] md:px-20 py-8 sm:py-20 bg-white text-black grid grid-cols-1 lg:grid-cols-2 place-items-start gap-10 sm:gap-24">
       <div className="pt-14 sm:pt-28">
         <h3 className="text-[31px] sm:text-[36px] w-full sm:w-[75%]">
           We connect our customers with the best, and help them keep up-and stay

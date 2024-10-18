@@ -72,7 +72,7 @@ const Navbar = ({ navItems }) => {
     <nav
       className={`fixed -top-1 left-0 right-0 z-50 transition-all duration-300 py-5 ${getNavbarStyle()}`}
     >
-      <div className="mx-auto px-8 sm:px-6 lg:px-20">
+      <div className="mx-auto px-8 sm:px-6 md:px-20">
         <div className="flex items-center justify-between h-16 sm:h-20">
           <div className="flex items-center">
             <Link to="/">

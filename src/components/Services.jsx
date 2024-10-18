@@ -4,13 +4,13 @@ import { FaArrowRight } from "react-icons/fa6";
 
 const Services = () => {
   return (
-    <section className="min-h-screen bg-white text-boldo_blue flex flex-col items-center justify-center px-[35px] sm:px-20 py-16">
+    <section className="min-h-screen bg-white text-boldo_blue flex flex-col items-center justify-center px-8 sm:px-6 md:px-12 lg:px-20 py-16">
       <small className="capitalize text-[20px]">Our Services</small>
-      <h2 className="w-full sm:w-[45%] mx-auto text-[33px] sm:text-[40px] text-center">
+      <h2 className="w-full md:w-[80%] lg:w-[45%] mx-auto text-[33px] sm:text-[40px] text-center">
         Handshake infographic mass market crowdfunding iteration.
       </h2>
 
-      <div className="grid grid-cols-1 sm:grid-cols-3 place-items-center gap-20 mt-16">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-items-center gap-20 mt-16">
         <div className="px-5">
           <img src="/coolfeature.png" alt="" />
           <h3 className="font-open_sans text-black text-[20px] py-3">

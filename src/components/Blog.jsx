@@ -19,10 +19,10 @@ const Blog = () => {
   return (
     <section className="min-h-screen bg-white text-boldo_blue flex flex-col items-center justify-center px-[35px] sm:px-20 py-16">
       <small className="capitalize text-[20px]">Our Blog</small>
-      <h2 className="w-full sm:w-[55%] mx-auto text-[33px] sm:text-[40px] text-center mb-12">
+      <h2 className="w-full md:w-[80%] lg:w-[55%] mx-auto text-[33px] sm:text-[40px] text-center mb-12">
         Value proposition accelerator product management venture
       </h2>
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-14 w-full max-w-6xl mt-14">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-14 w-full max-w-6xl mt-14">
         {visiblePosts.map((post) => (
           <BlogCard key={post.id} post={post} />
         ))}

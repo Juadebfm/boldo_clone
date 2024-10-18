@@ -9,11 +9,11 @@ const CTA = () => {
           <div className="w-full h-full bg-[#1C3D5B]/40 rounded-full"></div>
         </div>
 
-        <h2 className="text-[31px] sm:text-[36px] w-full sm:w-[45%] text-center relative z-20">
+        <h2 className="text-[31px] sm:text-[36px] w-full md:w-[90%] lg:w-[45%] text-center relative z-20">
           An enterprise template to ramp up your company website
         </h2>
 
-        <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-8 relative z-20 w-full sm:w-auto">
+        <div className="mt-10 flex flex-col lg:flex-row items-center justify-center gap-8 relative z-20 w-full sm:w-auto">
           <input
             type="email"
             placeholder="Your Email Address"
@@ -22,7 +22,7 @@ const CTA = () => {
 
           <Button
             buttonText="Start Now"
-            className="bg-boldo_green text-boldo_blue font-semibold capitalize w-full sm:w-auto"
+            className="bg-boldo_green text-boldo_blue font-semibold capitalize w-full lg:w-auto"
           />
         </div>
       </div>

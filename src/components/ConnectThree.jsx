@@ -24,7 +24,7 @@ const ConnectThree = () => {
     <section className="px-[35px] sm:px-20 py-8 sm:py-20 bg-white text-black">
       <img src="/connectLarge.png" alt="" className="w-full" />
 
-      <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 gap-8 place-items-start py-16">
+      <div className="mt-14 grid grid-cols-1 lg:grid-cols-2 gap-8 place-items-start py-16">
         <h3 className="text-[31px] sm:text-[36px] w-full sm:w-[70%]">
           We connect our customers with the best, and help them keep up-and stay
           open.

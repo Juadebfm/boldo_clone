@@ -108,7 +108,7 @@ const Enterprise = () => {
   return (
     <section className="px-[35px] sm:px-20 py-10 sm:py-20 bg-boldo_blue text-white h-max">
       <div className="flex flex-col items-start justify-between mb-10 sm:flex-row sm:items-end">
-        <h2 className="text-3xl sm:text-[48px] font-normal sm:w-[60%] mb-6 sm:mb-0 leading-normal">
+        <h2 className="text-3xl sm:text-[48px] font-normal md:w-[90%] lg:w-[60%] mb-6 sm:mb-0 leading-normal">
           An enterprise template to ramp up your company website
         </h2>
         <div className="flex items-center gap-5">

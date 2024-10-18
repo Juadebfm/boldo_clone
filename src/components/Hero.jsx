@@ -4,11 +4,11 @@ import Partners from "./Partners";
 
 const Hero = () => {
   return (
-    <div className="bg-boldo_blue h-max sm:h-screen flex flex-col relative overflow-hidden pt-28">
-      <div className="flex-grow flex flex-col sm:flex-row items-center justify-center px-8 sm:px-6 lg:px-20">
+    <div className="bg-boldo_blue h-max md:h-max lg:h-screen flex flex-col relative overflow-hidden pt-28">
+      <div className="flex-grow flex flex-col lg:flex-row items-center justify-center px-8 sm:px-6 md:px-20">
         <div className="bg-[#1C3D5B]/40 h-[900px] w-[900px] rounded-full absolute z-10 -top-[15%] lg:-top-[30%] right-0 lg:-right-[20%]"></div>
 
-        <div className="w-full sm:w-[55%] z-20">
+        <div className="w-full sm:w-[55%] md:w-full z-20 md:mt-10">
           <div className="w-full sm:w-[75%]">
             <h1 className="text-[36px] sm:text-[40px] lg:text-[50px] capitalize text-white leading-tight">
               Save time by building fast with Boldo Template
@@ -31,7 +31,7 @@ const Hero = () => {
           </div>
         </div>
 
-        <div className="w-full sm:w-[45%] z-20 mt-8 sm:mt-0">
+        <div className="w-full sm:w-[45%] md:w-[80%] lg:w-[45%] z-20 mt-8 md:mt-16">
           <img
             src="/hero_graphics.svg"
             className="p-0 sm:p-8 lg:p-16 pr-0 w-full"
