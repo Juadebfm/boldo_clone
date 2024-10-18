@@ -11,7 +11,7 @@ const Services = () => {
       </h2>
 
       <div className="grid grid-cols-1 sm:grid-cols-3 place-items-center gap-20 mt-16">
-        <div className="">
+        <div className="px-5">
           <img src="/coolfeature.png" alt="" />
           <h3 className="font-open_sans text-black text-[20px] py-3">
             Cool feature title
@@ -27,7 +27,7 @@ const Services = () => {
             <span>Explore page</span> <FaArrowRight />
           </Link>
         </div>
-        <div className="">
+        <div className="px-5">
           <img src="/even.png" alt="" />
           <h3 className="font-open_sans text-black text-[20px] py-3">
             Even cooler feature
@@ -43,7 +43,7 @@ const Services = () => {
             <span>Explore page</span> <FaArrowRight />
           </Link>
         </div>
-        <div className="">
+        <div className="px-5">
           <img src="/coolfeature3.png" alt="" />
           <h3 className="font-open_sans text-black text-[20px] py-3">
             Cool feature title

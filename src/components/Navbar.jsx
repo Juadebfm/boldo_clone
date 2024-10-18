@@ -1,54 +1,76 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Button from "./resusable/Button";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Navbar = ({ navItems }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeItem, setActiveItem] = useState("");
   const [isScrolled, setIsScrolled] = useState(false);
+  const location = useLocation();
+
+  const isBlogPostPage = location.pathname.startsWith("/blog/");
 
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollPos = window.pageYOffset;
       setIsScrolled(currentScrollPos > 50);
 
-      const sections = navItems.map((item) =>
-        document.querySelector(item.href)
-      );
-      const currentSection = sections.find((section) => {
-        if (section) {
-          const sectionTop = section.offsetTop;
-          const sectionHeight = section.clientHeight;
-          return (
-            currentScrollPos >= sectionTop &&
-            currentScrollPos < sectionTop + sectionHeight
-          );
+      // Only check for in-page sections if we're on the home page
+      if (location.pathname === "/") {
+        const sections = navItems
+          .filter((item) => !item.href.startsWith("/"))
+          .map((item) => document.querySelector(item.href));
+
+        const currentSection = sections.find((section) => {
+          if (section) {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            return (
+              currentScrollPos >= sectionTop &&
+              currentScrollPos < sectionTop + sectionHeight
+            );
+          }
+          return false;
+        });
+
+        if (currentSection) {
+          setActiveItem(currentSection.id);
         }
-        return false;
-      });
-      if (currentSection) {
-        setActiveItem(currentSection.id);
       }
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [navItems]);
+  }, [navItems, location.pathname]);
 
   const handleItemClick = (href) => {
     setIsOpen(false);
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+    if (!href.startsWith("/")) {
+      const element = document.querySelector(href);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
     }
+  };
+
+  const getNavbarStyle = () => {
+    if (isBlogPostPage) {
+      return "bg-white shadow-md";
+    }
+    return isScrolled ? "bg-white shadow-md" : "bg-transparent";
+  };
+
+  const getTextStyle = () => {
+    if (isBlogPostPage) {
+      return "text-[#0A2640]";
+    }
+    return isScrolled ? "text-[#0A2640]" : "text-white";
   };
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-5 ${
-        isScrolled ? "bg-white shadow-md" : "bg-transparent"
-      }`}
+      className={`fixed -top-1 left-0 right-0 z-50 transition-all duration-300 py-5 ${getNavbarStyle()}`}
     >
       <div className="mx-auto px-8 sm:px-6 lg:px-20">
         <div className="flex items-center justify-between h-16 sm:h-20">
@@ -61,9 +83,7 @@ const Navbar = ({ navItems }) => {
                   alt="Logo"
                 />
                 <span
-                  className={`font-medium text-2xl sm:text-[35px] leading-[33px] ${
-                    isScrolled ? "text-[#0A2640]" : "text-white"
-                  }`}
+                  className={`font-medium text-2xl sm:text-[35px] leading-[33px] ${getTextStyle()}`}
                 >
                   Boldo
                 </span>
@@ -87,13 +107,11 @@ const Navbar = ({ navItems }) => {
                     className={`px-3 py-2 rounded-md text-sm font-medium ${
                       activeItem === item.href.slice(1)
                         ? `${
-                            isScrolled
-                              ? "bg-[#0A2640] text-white"
-                              : "bg-white text-[#0A2640]"
+                            isBlogPostPage || isScrolled
+                              ? "bg-[#0A2640] text-white w-[128px] rounded-full"
+                              : "bg-white text-[#0A2640] w-[128px] rounded-full"
                           }`
-                        : `${
-                            isScrolled ? "text-[#0A2640]" : "text-white"
-                          } hover:bg-opacity-20 hover:bg-gray-700`
+                        : `${getTextStyle()} hover:bg-opacity-20 hover:bg-gray-700`
                     }`}
                   >
                     {item.name}
@@ -103,10 +121,10 @@ const Navbar = ({ navItems }) => {
 
               <Button
                 className={`${
-                  isScrolled
-                    ? "bg-[#0A2640] text-white"
-                    : "bg-white text-[#0A2640]"
-                } px-4 py-2 rounded-md`}
+                  isBlogPostPage || isScrolled
+                    ? "bg-[#0A2640] text-white w-[128px] rounded-full"
+                    : "bg-white text-[#0A2640] w-[128px] rounded-full"
+                } px-4 py-2`}
                 buttonText="Login"
               />
             </div>
@@ -117,9 +135,7 @@ const Navbar = ({ navItems }) => {
             <button
               onClick={() => setIsOpen(!isOpen)}
               type="button"
-              className={`inline-flex items-center justify-center p-2 rounded-md ${
-                isScrolled ? "text-[#0A2640]" : "text-white"
-              } hover:bg-opacity-20 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white`}
+              className={`inline-flex items-center justify-center p-2 rounded-md ${getTextStyle()} hover:bg-opacity-20 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white`}
               aria-controls="mobile-menu"
               aria-expanded={isOpen}
             >
@@ -178,7 +194,7 @@ const Navbar = ({ navItems }) => {
       >
         <div
           className={`px-2 pt-2 pb-3 space-y-1 sm:px-3 ${
-            isScrolled ? "bg-white" : "bg-[#0A2640]"
+            isBlogPostPage || isScrolled ? "bg-white" : "bg-[#0A2640]"
           }`}
         >
           {navItems.map((item) =>
@@ -195,13 +211,11 @@ const Navbar = ({ navItems }) => {
                 className={`block px-3 py-2 rounded-md text-base font-medium ${
                   activeItem === item.href.slice(1)
                     ? `${
-                        isScrolled
+                        isBlogPostPage || isScrolled
                           ? "bg-[#0A2640] text-white"
                           : "bg-white text-[#0A2640]"
                       }`
-                    : `${
-                        isScrolled ? "text-[#0A2640]" : "text-white"
-                      } hover:bg-opacity-20 hover:bg-gray-700`
+                    : `${getTextStyle()} hover:bg-opacity-20 hover:bg-gray-700`
                 }`}
               >
                 {item.name}
@@ -212,7 +226,7 @@ const Navbar = ({ navItems }) => {
           <div className="px-3 py-2">
             <Button
               className={`${
-                isScrolled
+                isBlogPostPage || isScrolled
                   ? "bg-[#0A2640] text-white"
                   : "bg-white text-[#0A2640]"
               } px-4 py-2 rounded-md hover:shadow-lg w-full`}
